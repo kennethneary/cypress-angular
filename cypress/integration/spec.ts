@@ -1,5 +1,14 @@
-it("loads examples", () => {
-  const baseUrl: string = "http://localhost:4200";
-  cy.visit(baseUrl);
-  cy.contains("Replace me with something relevant");
+describe('When Angular starting page is loaded', () => {
+  beforeEach(() => {
+    cy.visit('/');
+  });
+
+  it('has app title, shows proper command by default and reacts on command changes', () => {
+    cy.contains('cypress-angular');
+
+    cy.contains('.terminal', 'ng generate component xyz');
+
+    cy.contains('Angular Material').click();
+    cy.contains('.terminal', 'ng add @angular/material');
+  });
 });
